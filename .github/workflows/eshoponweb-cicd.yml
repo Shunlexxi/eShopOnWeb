@@ -57,6 +57,19 @@ jobs:
       name: 'Development'
     steps:
     
+      #Download the published files created in the previous job
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v4
+      with:
+        name: .net-app
+        path: .net-app
+
+    #Download the bicep templates from the previous job
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v4
+      with:
+        name: bicep-template
+        path: bicep-template
         
    #Login in your Azure subscription using a service principal (credentials stored as GitHub Secret in repo)
     - name: Azure Login
